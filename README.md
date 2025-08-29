@@ -109,15 +109,15 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.wfile.write(html_content.encode("utf-8"))
 
 if __name__ == "__main__":
-    server_address = ("", 5000)  
+    server_address = ("", 8000)  
     httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
-    print("Server running on http://localhost:5000")
+    print("Server running on http://localhost:8000")
     httpd.serve_forever()
 
 
 
 ## OUTPUT:
-<img width="1920" height="1080" alt="Screenshot 2025-08-29 094054" src="https://github.com/user-attachments/assets/4ad15a70-bcff-4c98-bd47-cc06e6f41632" />
+<img width="1920" height="1080" alt="Screenshot 2025-08-29 094646" src="https://github.com/user-attachments/assets/fc034413-e860-402e-b33c-41db00633fde" />
 
 
 
