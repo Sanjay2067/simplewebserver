@@ -36,9 +36,92 @@ Start the server script and check for errors.
 Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
+from http.server import HTTPServer, BaseHTTPRequestHandler
+
+# HTML content with TCP/IP Protocol table
+html_content = """
+<!doctype html>
+<html>
+<head>
+    <title>My Web Server</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+            margin: auto;
+        }
+        th, td {
+            border: 2px solid black;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: lightgreen;
+        }
+        tr:nth-child(even) {
+            background-color: #ccffcc;
+        }
+    </style>
+</head>
+<body>
+    <h1>TCP/IP Protocol</h1>
+    <table>
+        <tr>
+            <th>S.no</th>
+            <th>Layer</th>
+            <th>Protocols</th>
+        </tr>
+        <tr>
+            <td>1.</td>
+            <td><b>Application Layer</b></td>
+            <td>HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS, Telnet, SSH</td>
+        </tr>
+        <tr>
+            <td>2.</td>
+            <td><b>Transport Layer</b></td>
+            <td>TCP (Transmission Control Protocol), UDP (User Datagram Protocol)</td>
+        </tr>
+        <tr>
+            <td>3.</td>
+            <td><b>Network Layer (Internet Layer in TCP/IP)</b></td>
+            <td>IP (IPv4, IPv6), ICMP, IGMP, ARP, RARP</td>
+        </tr>
+        <tr>
+            <td>4.</td>
+            <td><b>Link Layer (Network Access Layer in TCP/IP)</b></td>
+            <td>Ethernet</td>
+        </tr>
+    </table>
+</body>
+</html>
+"""
+
+# HTTP request handler
+class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+    def do_GET(self):
+        self.send_response(200)
+        self.send_header("Content-type", "text/html")
+        self.end_headers()
+        self.wfile.write(html_content.encode("utf-8"))
+
+# Run the server
+if __name__ == "__main__":
+    server_address = ("", 5000)  # Runs on http://localhost:5000
+    httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
+    print("Server running on http://localhost:5000")
+    httpd.serve_forever()
+
 
 
 ## OUTPUT:
+<img width="1920" height="1080" alt="Screenshot 2025-08-29 094054" src="https://github.com/user-attachments/assets/4ad15a70-bcff-4c98-bd47-cc06e6f41632" />
+
 
 
 ## RESULT:
