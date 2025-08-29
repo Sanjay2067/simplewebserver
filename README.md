@@ -38,7 +38,6 @@ Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 ## PROGRAM:
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
-# HTML content with TCP/IP Protocol table
 html_content = """
 <!doctype html>
 <html>
@@ -102,7 +101,6 @@ html_content = """
 </html>
 """
 
-# HTTP request handler
 class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
     def do_GET(self):
         self.send_response(200)
@@ -110,9 +108,8 @@ class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
         self.end_headers()
         self.wfile.write(html_content.encode("utf-8"))
 
-# Run the server
 if __name__ == "__main__":
-    server_address = ("", 5000)  # Runs on http://localhost:5000
+    server_address = ("", 5000)  
     httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
     print("Server running on http://localhost:5000")
     httpd.serve_forever()
