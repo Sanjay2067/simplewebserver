@@ -1,5 +1,5 @@
 # EX01 Developing a Simple Webserver
-## Date:
+## Date:30-08-2025
 
 ## AIM:
 To develop a simple webserver to serve html pages and display the list of protocols in TCP/IP Protocol Suite.
@@ -36,89 +36,67 @@ Start the server script and check for errors.
 Open a browser and navigate to http://127.0.0.1:8000 (or the assigned port).
 
 ## PROGRAM:
+```
 from http.server import HTTPServer, BaseHTTPRequestHandler
 
-html_content = """
+content = '''
 <!doctype html>
-<html>
+<html lang="en">
 <head>
-    <title>My Web Server</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-        }
-        h1 {
-            text-align: center;
-        }
-        table {
-            border-collapse: collapse;
-            width: 80%;
-            margin: auto;
-        }
-        th, td {
-            border: 2px solid black;
-            padding: 10px;
-            text-align: left;
-        }
-        th {
-            background-color: lightgreen;
-        }
-        tr:nth-child(even) {
-            background-color: #ccffcc;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Table</title>
+    <h1 align="center">WEB DEVELOPMENT</h1>
 </head>
-<body>
-    <h1>TCP/IP Protocol</h1>
-    <table>
-        <tr>
-            <th>S.no</th>
-            <th>Layer</th>
-            <th>Protocols</th>
-        </tr>
-        <tr>
-            <td>1.</td>
-            <td><b>Application Layer</b></td>
-            <td>HTTP, HTTPS, FTP, SMTP, POP3, IMAP, DNS, Telnet, SSH</td>
-        </tr>
-        <tr>
-            <td>2.</td>
-            <td><b>Transport Layer</b></td>
-            <td>TCP (Transmission Control Protocol), UDP (User Datagram Protocol)</td>
-        </tr>
-        <tr>
-            <td>3.</td>
-            <td><b>Network Layer (Internet Layer in TCP/IP)</b></td>
-            <td>IP (IPv4, IPv6), ICMP, IGMP, ARP, RARP</td>
-        </tr>
-        <tr>
-            <td>4.</td>
-            <td><b>Link Layer (Network Access Layer in TCP/IP)</b></td>
-            <td>Ethernet</td>
-        </tr>
+<body bgcolor="lightblue">
+    <table border="1" align="center" bgcolor="pink" cellpadding="10">
+        <th><S class="No"></S></th>
+        <th>Name of the layer</th>
+        <th>Name of the protocol</th>
+    </tr>
+    <tr>
+        <td>1</td>
+        <td>Application layer</td>
+        <td>HTTP,FTP,DNS,Telnet,RDP</td>
+    </tr>
+    <tr>
+        <td>2</td>
+        <td>Transport Layer</td>
+        <td>TCP,UDP</td>
+    </tr>
+    <tr>
+        <td>3</td>
+        <td>Internet layer</td>
+        <td>ICMP,IGMP,ARP,IPV4/IPV6</td>
+    </tr>
+    <tr>
+        <td>4</td>
+        <td>Network access layer</td>
+        <td>Ethernet,FDDI,X.25,Frame Relay,Token Ring</td>
+    </tr>
+    
     </table>
+
 </body>
 </html>
-"""
+'''
 
-class SimpleHTTPRequestHandler(BaseHTTPRequestHandler):
+class MyServer(BaseHTTPRequestHandler):
     def do_GET(self):
-        self.send_response(200)
-        self.send_header("Content-type", "text/html")
+        print("Get request received...")
+        self.send_response(200) 
+        self.send_header("content-type", "text/html")       
         self.end_headers()
-        self.wfile.write(html_content.encode("utf-8"))
+        self.wfile.write(content.encode())
 
-if __name__ == "__main__":
-    server_address = ("", 8000)  
-    httpd = HTTPServer(server_address, SimpleHTTPRequestHandler)
-    print("Server running on http://localhost:8000")
-    httpd.serve_forever()
-
-
+print("This is my webserver") 
+server_address =('',8000)
+httpd = HTTPServer(server_address,MyServer)
+httpd.serve_forever()
+```
 
 ## OUTPUT:
-<img width="1920" height="1080" alt="Screenshot 2025-08-29 094646" src="https://github.com/user-attachments/assets/fc034413-e860-402e-b33c-41db00633fde" />
-
+<img width="1920" height="1080" alt="Screenshot 2025-08-29 094646" src="https://github.com/user-attachments/assets/924d31bf-de54-4cba-9009-2a1167a63032" />
 
 
 ## RESULT:
